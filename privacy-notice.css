@@ -1,0 +1,27 @@
+#s-ui-cc-navbar {
+	background: var(--pcom-blue);
+	border: 0;
+	box-shadow: 0px -5px 5px 0px rgba(0,0,0,0.5);
+}
+
+#s-ui-cc-msg {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-content: stretch;
+	align-items: center;
+	font-size: .875rem;
+	margin: 1em 0;
+}
+#s-ui-cc-msg > div {
+	color: var(--pcom-white);
+}
+
+#s-ui-cc-read-more-link {
+	color: var(--pcom-cyan);
+}
+
+#s-ui-cc-close-btn {
+
+}
