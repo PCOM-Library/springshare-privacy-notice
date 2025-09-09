@@ -42,5 +42,20 @@
 
 #s-ui-cc-close-btn:focus {
 	outline: solid 2px currentColor;
-	outline-offset: -6px !important;
+  	outline-offset: -6px !important;
 }
+
+#s-ui-cc-close-btn span.fa {
+	font-size: 1rem;
+}
+
+#s-ui-cc-close-btn span.fa + span {
+	margin-left: 0.5ch;
+}
+
+@media (max-width: 720px) {
+	#s-ui-cc-close-btn span.fa + span { 
+		display: none;
+	}
+}
+
