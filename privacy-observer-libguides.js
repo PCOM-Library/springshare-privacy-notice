@@ -41,7 +41,7 @@ function processPrivacyNotice(note) {
 	}
 	if(close) {
 		close.setAttribute('aria-label', 'Dismiss');
-		close.innerHTML = '<span class="fa fa-close" aria-hidden="true"></span><span> Dismiss</span>';
+		close.innerHTML = '<span class="fa fa-close" aria-hidden="true"></span><span> DISMISS</span>';
 	}
 	
 	privacyNoticeObserver.disconnect();

@@ -13,6 +13,7 @@
 	align-items: center;
 	font-size: .875rem;
 	margin: 1em 0;
+	line-height: 1;
 }
 #s-ui-cc-msg > div {
 	color: var(--pcom-white);
@@ -23,5 +24,23 @@
 }
 
 #s-ui-cc-close-btn {
+	background: var(--pcom-yellow);
+	display: block;
+	width: fit-content;
+	border: solid 3px var(--pcom-text);
+	border-radius: var(--pcom-border-radius);
+	padding: 0.5em 0.75em;
+	color: var(--pcom-text);
+	font-weight: 600;
+}
 
+#s-ui-cc-close-btn:hover {
+	background: var(--pcom-text);
+	color: var(--pcom-yellow);
+	border-color: var(--pcom-yellow);
+}
+
+#s-ui-cc-close-btn:focus {
+	outline: solid 2px currentColor;
+	outline-offset: -6px !important;
 }
