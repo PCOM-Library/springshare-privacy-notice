@@ -1,7 +1,21 @@
+:root {
+	--privacy-height: 90px;
+	--breathing-room: 10px;
+	--scroll-padding: calc(var(--privacy-height) + var(--breathing-room));   
+}
+
+html.privacy {
+	scroll-padding-bottom: var(--scroll-padding);
+	padding-bottom: calc(var(--privacy-height) - 1px);
+}
+html.privacy body {
+	height: auto !important;
+}
+
 #s-ui-cc-navbar {
 	background: var(--pcom-blue);
 	border: 0;
-	box-shadow: 0px -5px 5px 0px rgba(0,0,0,0.5);
+	box-shadow: 0px -8px 8px 2px rgba(0,0,0,0.5);
 }
 
 #s-ui-cc-msg {
@@ -13,49 +27,64 @@
 	align-items: center;
 	font-size: .875rem;
 	margin: 1em 0;
-	line-height: 1;
 }
-#s-ui-cc-msg > div {
+#s-ui-cc-msg > div:first-of-type {
 	color: var(--pcom-white);
+	flex-grow: 1;
+	text-align: center;
+}
+#s-ui-cc-msg > div:first-of-type p {
+	margin-bottom: .375rem;
 }
 
-#s-ui-cc-read-more-link {
-	color: var(--pcom-cyan);
-}
-
-#s-ui-cc-close-btn {
+#s-ui-cc-read-more-link { 
+	text-decoration: none;
 	background: var(--pcom-yellow);
+	margin: 0 auto;
 	display: block;
 	width: fit-content;
-	border: solid 3px var(--pcom-text);
+	border: solid 2px var(--pcom-text);
 	border-radius: var(--pcom-border-radius);
 	padding: 0.5em 0.75em;
 	color: var(--pcom-text);
-	font-weight: 600;
+	font-weight: 700;
+	line-height: 1;
+}
+#s-ui-cc-read-more-link:hover {
+	background: var(--pcom-dark-blue);
+	color: var(--pcom-yellow);
+	border-color: currentColor;
+}
+
+#s-ui-cc-read-more-link:focus {
+	outline: solid 2px currentColor;
+	outline-offset: -6px !important;
+}
+
+#s-ui-cc-close-btn {
+	background:  transparent;
+	display: block;
+	width: fit-content;
+	border: 0;
+	border: solid 2px transparent;
+	border-radius: var(--pcom-border-radius);
+	padding: 0;
+	height: 2.5rem;
+	width: 2.5rem;
+	color: var(--pcom-white);
+	line-height: 1;
 }
 
 #s-ui-cc-close-btn:hover {
-	background: var(--pcom-text);
 	color: var(--pcom-yellow);
-	border-color: var(--pcom-yellow);
 }
 
 #s-ui-cc-close-btn:focus {
-	outline: solid 2px currentColor;
-  	outline-offset: -6px !important;
+	outline: none;
+	border-color: currentColor;
 }
 
 #s-ui-cc-close-btn span.fa {
-	font-size: 1rem;
-}
-
-#s-ui-cc-close-btn span.fa + span {
-	margin-left: 0.5ch;
-}
-
-@media (max-width: 720px) {
-	#s-ui-cc-close-btn span.fa + span { 
-		display: none;
-	}
+	font-size: 1.5rem;
 }
 

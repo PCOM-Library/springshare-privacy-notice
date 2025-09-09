@@ -27,9 +27,18 @@ privacyNoticeObserver.observe(document.body, { subtree: true, childList: true })
 
 function processPrivacyNotice(note) {
 	let msg = document.getElementById('s-ui-cc-msg');
+	let notice = document.getElementById('s-ui-cc-navbar');
 	let link = document.getElementById('s-ui-cc-read-more-link');
 	let close = document.getElementById('s-ui-cc-close-btn');
 	
+	// privacy notice detected, so let's turn on the privacy class.
+	document.querySelector('html').classList.add('privacy');
+	
+	// setup size monitor for scroll padding
+	const privacySizeObserver = new ResizeObserver(getPrivacyNoticeHeight);
+	privacySizeObserver.observe(notice);
+	
+	// fix various elements
 	if(link && link.nodeName == 'A') {
 		link.setAttribute('role', 'button');
 		link.setAttribute('ariahaspopup', 'dialog');
@@ -40,10 +49,22 @@ function processPrivacyNotice(note) {
 		});
 	}
 	if(close) {
-		close.setAttribute('aria-label', 'Dismiss');
-		close.innerHTML = '<span class="fa fa-close" aria-hidden="true"></span><span> DISMISS</span>';
+		close.innerHTML = '<span class="fa fa-close" aria-hidden="true"></span><span class="sr-only"> CLOSE</span>';
+		close.addEventListener('click', function(evt) { 
+			console.log('close'); 
+			document.querySelector('html').classList.remove('privacy');
+			privacySizeObserver.disconnect();
+		});
 	}
 	
+	// turn off privacyNoticeObserver
 	privacyNoticeObserver.disconnect();
 }
 
+
+function getPrivacyNoticeHeight() {
+	console.log('height check');
+	let notice = document.getElementById('s-ui-cc-navbar');
+	let height = notice.offsetHeight;
+	document.documentElement.style.setProperty('--privacy-height', `${height}px`);
+}
