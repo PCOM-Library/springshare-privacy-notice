@@ -24,6 +24,8 @@ const privacyNoticeObserver = new MutationObserver(function(mutations_list) {
 
 // Start Observer
 privacyNoticeObserver.observe(document.body, { subtree: true, childList: true });
+// Ensure vertical scrollbar is detected
+noteVerticalScrollbar();
 
 function processPrivacyNotice(note) {
 	let msg = document.getElementById('s-ui-cc-msg');
@@ -50,7 +52,7 @@ function processPrivacyNotice(note) {
 	if(close) {
 		close.innerHTML = '<span class="fa fa-close" aria-hidden="true"></span><span class="sr-only"> CLOSE</span>';
 		close.addEventListener('click', function(evt) { 
-			console.log('privacy notice close'); 
+			// console.log('privacy notice close'); 
 			document.querySelector('html').classList.remove('privacy');
 			privacySizeObserver.disconnect();
 		});
@@ -61,18 +63,23 @@ function processPrivacyNotice(note) {
 }
 
 function getPrivacyNoticeHeight() {
-	console.log('privacy notice height check');
+	// console.log('privacy notice height check');
 	let notice = document.getElementById('s-ui-cc-navbar');
 	let height = notice.offsetHeight;
 	document.documentElement.style.setProperty('--privacy-height', `${height}px`);
 }
 
-
 // detect if the vertical scroll bar is present to adjust body height via CSS
 function noteVerticalScrollbar() {
+	// console.log(window.innerHeight,document.body.offsetHeight);
 	if(window.innerHeight > document.body.offsetHeight)
 		document.documentElement.classList.remove('vscroll');
 	else
 		document.documentElement.classList.add('vscroll');
 }
-window.onresize = noteVerticalScrollbar;
+window.addEventListener('resize', noteVerticalScrollbar);
+
+// ensure vertical scrollbar is detected.
+window.addEventListener('load', function() {
+	noteVerticalScrollbar();
+});
