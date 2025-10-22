@@ -6,16 +6,23 @@
 
 html.privacy {
 	scroll-padding-bottom: var(--scroll-padding);
-	padding-bottom: calc(var(--privacy-height) - 1px);
 }
 html.privacy body {
-	height: auto !important;
+	height: 100%;
+	padding-bottom: calc(var(--privacy-height) - 1px);
+}
+html.privacy.vscroll body {
+	height: auto;
 }
 
 #s-ui-cc-navbar {
 	background: var(--pcom-blue);
 	border: 0;
-	box-shadow: 0px -8px 8px 2px rgba(0,0,0,0.5);
+	box-shadow: 0px -6px 6px 2px rgba(0,0,0,0.75);
+}
+
+#s-ui-cc-main {
+	width: 100%;
 }
 
 #s-ui-cc-msg {
@@ -26,7 +33,7 @@ html.privacy body {
 	align-content: stretch;
 	align-items: center;
 	font-size: .875rem;
-	margin: 1em 0;
+	margin: 1em;
 }
 #s-ui-cc-msg > div:first-of-type {
 	color: var(--pcom-white);
